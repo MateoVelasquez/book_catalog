@@ -47,9 +47,7 @@ class BookNotFoundException(ResourceNotFound):
     """
     Exception raised when a book is not found in the repository.
     """
-
-    def __init__(self):
-        super().__init__("Book not found")
+    pass
 
 
 class BookAlreadyExistsException(ConflictError):
