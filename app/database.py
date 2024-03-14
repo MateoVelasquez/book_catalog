@@ -8,6 +8,7 @@ from pymongo import MongoClient
 from pymongo.database import Database
 from pymongo.errors import ConnectionFailure
 
+
 class DatabaseManager:
     _instance = None
 
@@ -31,7 +32,8 @@ class DatabaseManager:
             ConnectionError: If unable to establish a connection to the MongoDB server.
         """
         try:
-            connection_str = os.environ.get('MONGO_URL', "mongodb://localhost:27017/")
+            connection_str = os.environ.get('MONGO_URL',
+                                            "mongodb://localhost:27017/")
             db_name = os.environ.get("MONGO_DATABASE_NAME", "local")
             self.mongo_client = MongoClient(connection_str)
             self.database = self.mongo_client.get_database(db_name)

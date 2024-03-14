@@ -22,6 +22,7 @@ Exceptions:
     exists in the repository.
 """
 
+
 class DomainError(Exception):
     """
     Base class for domain-specific exceptions.

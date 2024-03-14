@@ -90,7 +90,8 @@ class MongoDBAdapter(BookRepositoryAbstract):
         Returns:
             Optional[Book]: The deleted book object if successful, None otherwise.
         """
-        deleted_book = self.collection.find_one_and_delete({"_id": ObjectId(book_id)})
+        deleted_book = self.collection.find_one_and_delete(
+            {"_id": ObjectId(book_id)})
         if deleted_book:
             return deleted_book
         else:

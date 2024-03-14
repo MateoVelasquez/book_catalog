@@ -18,6 +18,7 @@ from ..domain.repository import BookRepositoryAbstract
 
 
 class BookService:
+
     def __init__(self, book_repository: BookRepositoryAbstract) -> None:
         """
         Initializes the BookService with a specific BookRepository.
@@ -69,10 +70,10 @@ class BookService:
         """
         registered_book = self.book_repository.get_by_isbn(book.isbn)
         if registered_book:
-            raise BookAlreadyExistsException(f"Book with ISBN {book.isbn} already exists.")
+            raise BookAlreadyExistsException(
+                f"Book with ISBN {book.isbn} already exists.")
         created_book = self.book_repository.create_book(book)
         return created_book
-    
 
     def delete_book(self, book_id: str) -> None:
         """
@@ -87,7 +88,7 @@ class BookService:
         deleted_book = self.book_repository.delete_book(book_id)
         if not deleted_book:
             raise BookNotFoundException(f"Book with ID {book_id} not found.")
-    
+
     def update_book(self, book_id: str, book_data: Book) -> Book:
         """
         Updates the information of a book in the repository.
@@ -106,4 +107,3 @@ class BookService:
         if not updated_book:
             raise BookNotFoundException(f"Book with ID {book_id} not found.")
         return updated_book
-
