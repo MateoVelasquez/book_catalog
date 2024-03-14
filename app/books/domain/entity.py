@@ -11,6 +11,7 @@ This will simplify your code.
 """
 from dataclasses import dataclass
 
+
 @dataclass
 class Book:
     """
@@ -33,7 +34,7 @@ class Book:
         'The Little Prince'
 
     """
-    book_id: int
+    id: str
     isbn: str
     author: str
     title: str

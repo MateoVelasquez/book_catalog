@@ -13,6 +13,7 @@ from .entity import Book
 
 
 class BookRepositoryAbstract(ABC):
+
     @abstractmethod
     def get_all_books(self) -> List[Book]:
         """
@@ -50,7 +51,7 @@ class BookRepositoryAbstract(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def delete_book(self, book_id: str) -> bool:
+    def delete_book(self, book_id: str) -> Optional[Book]:
         """
         Deletes a book from the repository by its ID.
 
@@ -58,7 +59,7 @@ class BookRepositoryAbstract(ABC):
             book_id (str): The ID of the book to delete.
 
         Returns:
-            bool: True if the book was successfully deleted, False otherwise.
+            Optional[Book]: Book or None
         """
         raise NotImplementedError
 
@@ -68,7 +69,6 @@ class BookRepositoryAbstract(ABC):
         Updates the information of a book in the repository.
 
         Args:
-            book_id (str): The ID of the book to update.
             new_book_data (Book): The updated book object.
 
         Returns:
