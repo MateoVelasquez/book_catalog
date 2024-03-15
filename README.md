@@ -3,6 +3,8 @@
 ![Static Badge](https://img.shields.io/badge/fastapi-v0.110.0-%23009688?logo=FastAPI)
 ![Static Badge](https://img.shields.io/badge/PyMongo-v4.6-%2347A248?logo=MongoDB)
 ![Static Badge](https://img.shields.io/badge/pytest-v8.1-%230A9EDC?logo=pytest)
+![Static Badge](https://img.shields.io/badge/Docker-Images%20%7C%20Compose%20-%232496ED?logo=docker)
+
 ![GitHub License](https://img.shields.io/github/license/MateoVelasquez/book_catalog)
 ![GitHub watchers](https://img.shields.io/github/watchers/MateoVelasquez/book_catalog)
 ![GitHub forks](https://img.shields.io/github/forks/MateoVelasquez/book_catalog)
@@ -14,7 +16,10 @@
 - [Getting started](#getting-started)
     - [Installation](#installation)
     - [Folder structure](#folder-structure)
-    - [Usage](#usage)
+- [Deployment](#deployment)
+    - [Local Deployment](#local-deployment)
+    - [Docker Deployment](#docker-deployment)
+- [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -77,19 +82,6 @@ To install the Book Catalog Project in your machine, follow these steps:
     Note: If these variables are not defined, the code will use default MongoDB connection settings.
 
 
-5. Run the FastAPI application:
-
-    With uvicorn:
-    ```bash
-    uvicorn app.main:app --reload
-    ```
-    Alternatively:
-    ```bash
-    python run.py
-    ```
-
-
-
 ## Folder structure
 The project directory structure is organized as follows:
 ```
@@ -125,7 +117,42 @@ The application follows a hexagonal architecture structure, divided into the fol
 
 For more information, please refer to this document: [folder structure](docs/folder_structure.md).
 
-## Usage
+# Deployment
+
+## Local Deployment:
+To run the Book Catalog project on your local machine, follow these steps:
+
+1. Navigate to the project directory:
+    ```bash
+    cd book-catalog
+    ```
+
+2. Run the FastAPI application using Uvicorn:
+
+    With uvicorn:
+    ```bash
+    uvicorn app.main:app --reload
+    ```
+    Alternatively, you can run it using Python Script:
+    ```bash
+    python run.py
+    ```
+Note: Make sure your MongoDB database is running and that you have set up the required environment variables as specified in the `.env` file.
+
+## Docker Deployment:
+
+1. Navigate to the project directory:
+    ```bash
+    cd book-catalog
+    ```
+
+2. Run Docker Compose:
+
+    ```bash
+    docker-compose up -d
+    ```
+
+# Usage
 Access the Book Catalog API docs at http://localhost:8000/docs in your web browser or API testing tool.
 
 The Book Catalog project provides a simple CRUD (Create, Read, Update, Delete) interface for managing books. Below are the available endpoints:
@@ -137,6 +164,18 @@ The Book Catalog project provides a simple CRUD (Create, Read, Update, Delete) i
 - **DELETE /books/{book_id}:** Deletes a book from the catalog.
 
 To interact with these endpoints, you can use tools like CURL, Postman, or any HTTP client library in your preferred programming language.
+
+Note: Initially, the database is empty, so GET requests will not return any data. You can start by adding a new book using the POST method with the following structure:
+
+
+```json
+{
+    "isbn": "978-0-545-01022-1",
+    "author": "Mateo Velásquez",
+    "title": "Test Book",
+    "description": "This is a test book"
+}
+```
 
 # Contributing
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
@@ -165,9 +204,9 @@ We appreciate your interest and value your input!
 # Acknowledgments
 We would like to express our gratitude to the following resources and individuals whose insights, documentation, and tutorials greatly contributed to the development of this project.
 
-- https://github.com/serfer2/flask-hexagonal-architecture-api/tree/main/src
 - The [FastAPI](https://fastapi.tiangolo.com/) documentation and community for providing comprehensive guidance and support in building robust APIs.
 - [MongoDB Developer](https://www.mongodb.com/developer/languages/python/python-quickstart-fastapi/) which provided valuable knowledge on MongoDB database management with fastapi.
+- [Python API example (SOLID & Hexagonal Arch.)](https://github.com/serfer2/flask-hexagonal-architecture-api) Example of an API built with Python3, followin Hexagonal architecture (ports & adapters) and SOLID principles.
 - [Hexagonal Architecture in Python](https://douwevandermeij.medium.com/hexagonal-architecture-in-python-7468c2606b63) article wrote by Douwe van der Meij
 - [Hexagonal architecture in Python](https://blog.szymonmiks.pl/p/hexagonal-architecture-in-python/) article wrote by Szymon Miks in his personal blog.
 - [ES] [Aprende Arquitectura Hexagonal en 10 minutos](https://www.youtube.com/watch?v=eNFAJbWCSww&ab_channel=CodelyTV-Redescubrelaprogramaci%C3%B3n). Video explaining Hex Architecture concepts by "CodelyTV - Redescubre la programación"
