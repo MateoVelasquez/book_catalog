@@ -16,9 +16,13 @@ Note:
 """
 
 from fastapi import FastAPI
+from dotenv import find_dotenv, load_dotenv
 
 from app.books.infraestructure.api.api_routers import books_router
 from app.error_handlers import register_error_handlers
+
+# Load dotenv:
+load_dotenv(find_dotenv('.env'))
 
 # APP definition
 app = FastAPI(
