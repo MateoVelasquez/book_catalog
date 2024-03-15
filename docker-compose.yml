@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/
+      - MONGO_DATABASE_NAME=local
+    depends_on:
+      - mongo
+    networks:
+      - mynetwork
+
+  mongo:
+    image: mongo:latest
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
+  
+volumes:
+  mongodb_data:
