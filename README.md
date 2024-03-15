@@ -123,7 +123,7 @@ The application follows a hexagonal architecture structure, divided into the fol
 - **Error Handlers:** Registers and manages custom error handlers for the application.
 - **Main:** Entry point of the application.
 
-For more information, please refer to this document: [folder structure](https://github.com/MateoVelasquez/book_catalog/docs/folder_structure.md).
+For more information, please refer to this document: [folder structure](docs/folder_structure.md).
 
 ## Usage
 Access the Book Catalog API docs at http://localhost:8000/docs in your web browser or API testing tool.
