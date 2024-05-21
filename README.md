@@ -54,7 +54,7 @@ To install the Book Catalog Project in your machine, follow these steps:
 
 1. Clone this repository to your local machine:
     ```bash
-    git clone https://github.com/yourusername/book-catalog.git
+    git clone https://github.com/MateoVelasquez/book_catalog.git
     ```
 2. Navigate to the project directory:
     ```bash
